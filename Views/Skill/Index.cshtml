@@ -1,0 +1,27 @@
+@model IEnumerable<Skill>
+    
+<a asp-controller="Skill" asp-action="Create" class="btn btn-primary"> Add Skill</a>
+@* <partial name="Create" /> *@
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Skills</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>i</td>
+                    <td>@item.name</td>
+                    <td>
+                        <a asp-controller="Skill" asp-action="Delete" asp-route-id="@item.skillId" class="btn btn-danger"> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

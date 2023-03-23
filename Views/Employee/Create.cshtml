@@ -1,0 +1,29 @@
+@model Employee
+
+<form method="post">
+    <h1>Register Employee</h1>
+    <div>
+        <label asp-for="firstName"></label>
+        <input asp-for="firstName" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="lastName"></label>
+        <input asp-for="lastName" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="dateOfJoining"></label>
+        <input type="date" asp-for="dateOfJoining" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="designation"></label>
+        <input asp-for="designation" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="email"></label>
+        <input asp-for="email" class="form-control"/>
+    </div>
+    <div>
+        <button type="submit">Register</button>
+        <button type="button" asp-controller="Employee" asp-action="Index">List Employees</button>
+    </div>
+</form>

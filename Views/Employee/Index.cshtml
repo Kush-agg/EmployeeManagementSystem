@@ -1,0 +1,36 @@
+@model IEnumerable<Employee>
+<div class="mb-3">
+    <a asp-controller="Employee" asp-action="Create" class="btn btn-primary"> Add Employee</a>   
+</div>
+<div>
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Date Of Joining</th>
+                <th>Designation</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>i</td>
+                    <td>@item.firstName @item.lastName</td>
+                    <td>@item.dateOfJoining.ToString("dd/MM/yyyy")</td>
+                    <td>@item.designation</td>
+                    <td>@item.email</td>
+                    <td>
+                        <button  class="btn btn-primary btn-sm"> View Skills</button>
+                        <button  class="btn btn-warning btn-sm"> Assign Skills</button>
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.employeeId" class="btn btn-success btn-sm"> Edit</a>
+                        <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.employeeId" class="btn btn-danger btn-sm"> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
