@@ -2,6 +2,7 @@ using EMS.Data;
 using Microsoft.AspNetCore.Mvc;
 using EMS.Repository.IRepository;
 using EMS.Models;
+using EMS.Models.ViewModels;
 
 namespace EMS.Controllers;
 
@@ -14,9 +15,17 @@ public class SkillController : Controller
         _unitOfWork = unitOfWork;
     }
 
-    public IActionResult Index()
+    public IActionResult AssignSkill()
     {
             return View( _unitOfWork.Skill.GetAll().OrderBy(s => s.name));
+    }
+
+    public IActionResult Index()
+    {
+        SkillIndex si = new SkillIndex();
+        si.Skills = _unitOfWork.Skill.GetAll().OrderBy(s => s.name).ToList();
+        si.Skill = new Skill();
+        return View(si);
     }
 
     public async Task<IActionResult> Details(int? id)
@@ -41,18 +50,28 @@ public class SkillController : Controller
         return View();
     }
 
-
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("name")] Skill Skill)
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.Skill.Add(Skill);
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
+            var data = _unitOfWork.Skill.GetAll().ToList();
+            var check = data.Where(s=> s.name.ToLower().Contains(Skill.name.ToLower())).FirstOrDefault();
+            if(check==null)
+            {
+                _unitOfWork.Skill.Add(Skill);
+                _unitOfWork.Save();
+                TempData["success"]="Skill created successfully";
+                return RedirectToAction(nameof(Index));
+            }else{
+                TempData["success"]="Skill already exists";
+
+            }
+            
         }
-        return View(Skill);
+        return RedirectToAction(nameof(Index));
     }
 
     public async Task<IActionResult> Edit(int? id)
@@ -71,7 +90,8 @@ public class SkillController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Skill skill)
+    // public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Skill skill)
+    public async Task<IActionResult> Edit(int id, Skill skill)
     {
         if (id != skill.skillId)
         {

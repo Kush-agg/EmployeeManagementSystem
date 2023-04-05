@@ -55,6 +55,9 @@ namespace EMS.Migrations
                     b.Property<int>("skillId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("employeeSkillId")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("experience")
                         .HasColumnType("INTEGER");
 
@@ -66,7 +69,26 @@ namespace EMS.Migrations
 
                     b.HasIndex("skillId");
 
-                    b.ToTable("EmployeeSkill");
+                    b.ToTable("EmployeeSkills");
+                });
+
+            modelBuilder.Entity("EMS.Models.Login", b =>
+                {
+                    b.Property<int>("loginId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("userName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("loginId");
+
+                    b.ToTable("Logins");
                 });
 
             modelBuilder.Entity("EMS.Models.Skill", b =>

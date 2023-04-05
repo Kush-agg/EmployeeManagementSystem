@@ -1,7 +1,17 @@
-@model IEnumerable<Skill>
-    
-<a asp-controller="Skill" asp-action="Create" class="btn btn-primary"> Add Skill</a>
-@* <partial name="Create" /> *@
+@model EMS.Models.ViewModels.SkillIndex;
+
+<div class="mb-2">
+    @using (Html.BeginForm("Create","Skill",FormMethod.Post))
+    {
+        <h5>Add Skill</h5>
+        @Html.TextBoxFor(s=> s.Skill.name, new{placeholder= "Enter Skill", @class= "form-control"})
+        <span asp-validation-for="@Model.Skill.name" class="text-danger"></span>
+        <div class="mt-1">
+            <button type="submit" class="btn btn-primary btn-sm">Add</button>
+        </div>
+    }
+</div>  
+
 <div>
     <table class="table table-bordered table-striped">
         <thead>
@@ -12,16 +22,28 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @{
+            var i = 1;
+            }
+            @foreach (var item in Model.Skills)
             {
                 <tr>
-                    <td>i</td>
+                    <td>@i</td>
                     <td>@item.name</td>
                     <td>
-                        <a asp-controller="Skill" asp-action="Delete" asp-route-id="@item.skillId" class="btn btn-danger"> Delete</a>
+                        <a asp-controller="Skill" asp-action="Delete" asp-route-id="@item.skillId" class="btn btn-danger btn-sm"> Delete</a>
                     </td>
                 </tr>
+                {
+                    i+=1;
+                }
             }
         </tbody>
     </table>
 </div>
+
+@section Scripts{
+    @{
+      <partial name="_ValidationScriptsPartial" />
+    }
+}

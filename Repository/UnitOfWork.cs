@@ -13,9 +13,11 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
         Employee = new EmployeeRepository(_context);
         Skill = new SkillRespository(_context);
+        EmployeeSkill = new EmployeeSkillRepository(_context);
     }
     public IEmployeeRepository Employee {get; private set;}
     public ISkillRespository Skill {get; private set;}
+    public IEmployeeSkillRepository EmployeeSkill{get; private set;}
 
     public void Save()
     {

@@ -1,0 +1,49 @@
+@model Employee
+
+<form method="post" asp-action="Edit">
+    <input asp-for ="employeeId" hidden />
+
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Employee <hr /></h2>
+            
+        </div>
+    @* <div asp-validation-summary="All"></div> *@
+         <div class="mb-3">
+        <label asp-for="firstName"></label>
+        <input asp-for="firstName" class="form-control" />
+        <span asp-validation-for="firstName" class="text-danger"></span>
+       </div>
+      <div class="mb-3">
+        <label asp-for="lastName"></label>
+        <input asp-for="lastName" class="form-control" />
+        <span asp-validation-for="lastName" class="text-danger"></span>
+      </div>
+       <div class="mb-3">
+        <label asp-for="dateOfJoining"></label>
+        <input asp-for="dateOfJoining" class="form-control" />
+        <span asp-validation-for="dateOfJoining" class="text-danger"></span>
+       </div>
+       <div class="mb-3">
+        <label asp-for="designation"></label>
+        <input asp-for="designation" class="form-control" />
+        <span asp-validation-for="designation" class="text-danger"></span>
+       </div>
+       <div class="mb-3">
+        <label asp-for="email"></label>
+        <input asp-for="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+       </div>
+      <button type="submit" class="btn btn-success" style="width: 150px;">Update Employee</button>
+      <a asp-asp-controller="Employee" asp-action="Index" class="btn btn-secondary" style="width: 150px;">
+        Back to List
+      </a>
+    </div>
+
+</form>
+
+@section Scripts{
+    @{
+      <partial name="_ValidationScriptsPartial" />
+    }
+}

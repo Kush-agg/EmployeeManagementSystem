@@ -7,9 +7,10 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {   
     }
-
+    public DbSet<Login> Logins {get; set;}
     public DbSet<Employee> Employees {get; set;}
     public DbSet<Skill> Skills {get; set;}
+    public DbSet<EmployeeSkill> EmployeeSkills {get; set;}
 
     protected override void OnModelCreating (ModelBuilder modelBuilder)
     {
@@ -31,10 +32,12 @@ public class ApplicationDbContext : DbContext
                 {
                     j.Property(es => es.level);
                     j.Property(es =>es.experience);
-                    // j.Property(es => es.skillType);
                     j.HasKey(t => new {t.employeeId, t.skillId});
                 }
             );
+        // modelBuilder.Entity<EmployeeSkill>()
+        // .Property(es => es.employeeSkillId)
+        // .ValueGeneratedOnAdd();
     }
 
 }

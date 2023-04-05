@@ -88,3 +88,15 @@ C:\Users\kusaggar\Documents\EMS\obj\Debug\net6.0\refint\EMS.dll
 C:\Users\kusaggar\Documents\EMS\obj\Debug\net6.0\EMS.pdb
 C:\Users\kusaggar\Documents\EMS\obj\Debug\net6.0\EMS.genruntimeconfig.cache
 C:\Users\kusaggar\Documents\EMS\obj\Debug\net6.0\ref\EMS.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\ClosedXML.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\ExcelNumberFormat.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\Irony.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\XLParser.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\Antlr3.Runtime.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\System.Web.Optimization.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\kusaggar\Documents\EMS\bin\Debug\net6.0\WebGrease.dll

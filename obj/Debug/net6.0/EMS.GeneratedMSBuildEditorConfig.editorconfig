@@ -15,12 +15,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\kusaggar\Documents\EMS
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kusaggar/Documents/EMS/Controllers/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbGxlcnNcSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/kusaggar/Documents/EMS/Views/EmployeeSkill/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVTa2lsbFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kusaggar/Documents/EMS/Controllers/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbGxlcnNcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/kusaggar/Documents/EMS/Views/EmployeeSkill/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVTa2lsbFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kusaggar/Documents/EMS/Views/Employee/Create.cshtml]
@@ -47,12 +47,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kusaggar/Documents/EMS/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kusaggar/Documents/EMS/Views/Login/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kusaggar/Documents/EMS/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kusaggar/Documents/EMS/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kusaggar/Documents/EMS/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kusaggar/Documents/EMS/Views/Shared/_ViewSkill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaWV3U2tpbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kusaggar/Documents/EMS/Views/Skill/Create.cshtml]

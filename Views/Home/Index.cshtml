@@ -1,8 +1,144 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model EMS.Models.ViewModels.HomeIndex;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@using (Html.BeginForm("Index","Home",FormMethod.Get))
+{
+    <div class="container mt-3">
+    <div class="row">
+       <div class="col-6">
+          <div mt-1> Search by Name</div>
+          <input class="form-control" type="text" name="name" />
+          <div class="mt-3">
+            <div> Search by Expert Level</div>
+                <select class="form-control" name="Level" id="expertLevel">
+                    <option value="" selected disabled hidden></option>
+                    <option value="Fresher">Fresher</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Senior Developer">Senior Developer</option>
+                    <option value="Solution Archietect">Solution Archietect</option>
+                </select>
+          </div>
+       </div>
+       <div class="col-6">
+          <div> Search by Skills</div>
+          <select class="form-control" name="skillId" id="skill" onfocus='this.size=5;'>
+            <option value="" selected disabled hidden></option>
+            @foreach (var item in Model.skills)
+            {
+                <option value="@item.skillId">@item.name</option>
+            }
+        </select>
+       </div>
+    </div>
 </div>
+
+
+<div class=" ml-3 mt-3 mb-3 width-50px">
+    <input type="submit" class="btn btn-sm btn-warning " value="Search Employees"/>
+</div>
+<div class=" ml-3 mt-3 mb-3 width-50px">
+    Total Count: @Model.employees.Count
+   @{
+    var data = new Dictionary<string,List<Employee>>
+        {
+            {"list", Model.employees.ToList()}
+        };
+   }
+    <a class="btn btn-sm btn-secondary ml-3" asp-controller="Home" asp-action="ExportExcel" value="@Model.employees.ToList()" >Export to Excel</a>
+</div>
+}
+<div>
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Date Of Joining</th>
+                <th>Designation</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+         <tbody>
+            @{
+            var i = 1;
+            }
+            @if (Model.employees.Count>0)
+            {
+                @foreach (var item in Model.employees)
+                {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.firstName @item.lastName</td>
+                    <td>@item.dateOfJoining.ToString("dd/MM/yyyy")</td>
+                    <td>@item.designation</td>
+                    <td>@item.email</td>
+                    <td>
+                        <a asp-controller="Employee" asp-action="AssignViewBag" asp-route-id="@item.employeeId" class="btn btn-primary btn-sm"> View Skills</a>
+                    </td>
+                </tr>
+                {
+                    i+=1;
+                }
+                }
+            }
+        </tbody> 
+    </table>
+</div>
+
+<!--View Skill Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="turnFalse">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="detailDiv"></div>
+              <table class="table table-bordered table-striped" id="myTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Skill</th>
+                        <th>Level</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     @foreach (var employeeSkill in @ViewBag.skills)
+                    {
+                        <tr>
+                          <td><a asp-controller="EmployeeSkill" asp-action="Delete" asp-route-id="@employeeSkill.employeeSkillId" class="btn btn-danger"> Remove</a></td>
+                          <td>@employeeSkill.skillName</td>
+                          <td>@employeeSkill.level</td>
+                          <td>@employeeSkill.experience</td>
+                        </tr>
+                    } 
+                </tbody>
+              </table>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="turnfalse">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    var x = '@ViewBag.modal';
+$(document).ready(function(){
+  $('#turnFalse').click(function(){
+    location.href=`/Employee/turnFalse`;
+  })
+  $('#turnfalse').click(function(){
+    location.href=`/Employee/turnFalse`;
+  })
+  
+})
+$(document).ready(function(){
+  if(x == 'True'){
+    $('#exampleModalLong').modal('show');
+  }
+})
+</script>

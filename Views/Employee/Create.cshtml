@@ -5,25 +5,35 @@
     <div>
         <label asp-for="firstName"></label>
         <input asp-for="firstName" class="form-control"/>
+        <span asp-validation-for="firstName" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="lastName"></label>
         <input asp-for="lastName" class="form-control"/>
+        <span asp-validation-for="lastName" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="dateOfJoining"></label>
         <input type="date" asp-for="dateOfJoining" class="form-control"/>
+        <span asp-validation-for="dateOfJoining" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="designation"></label>
         <input asp-for="designation" class="form-control"/>
+        <span asp-validation-for="designation" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="email"></label>
         <input asp-for="email" class="form-control"/>
+        <span asp-validation-for="email" class="text-danger"></span>
     </div>
-    <div>
+    <div class="mt-2">
         <button type="submit">Register</button>
         <button type="button" asp-controller="Employee" asp-action="Index">List Employees</button>
     </div>
 </form>
+@section Scripts{
+    @{
+      <partial name="_ValidationScriptsPartial" />
+    }
+}
