@@ -19,32 +19,30 @@
    <partial name="_Notification" />
    <div class="container mt-3">
     
-  <div class="row">
+   <div class="row mt-4">
     
-    <div class="col-4 offset-4 border border-dark rounded pl-5 pr-5 pb-5">
-      <h2>Admin Login</h2>
+    <div class="col-4 offset-4 border border-dark rounded pl-5 pr-5 pb-5 mt-4">
+      <h2 class="mt-4 text-center">Admin Login</h2>
       <hr />
       <form method="post"  asp-action="Login">
-        <div class="form-group">
+        <div class="form-group text-center">
           <label asp-for="userName"></label> </br>
-          <input type="text" asp-for="userName" class="form-group" placeholder="enter username" autocomplete="off" required /><br>
+          <input type="text" asp-for="userName" class="form-control" autocomplete="off" required /><br>
           <span class="text-danger">@TempData["errorMessage"]</span>
         </div>
-        <div class="form-group">
+        <div class="form-group text-center">
           <label asp-for="password"></label> </br>
-          <input type="password" asp-for="password" id="tbName" class="form-group" placeholder="enter password" autocomplete="off" required /><br>
+          <input type="password" asp-for="password" id="tbName" class="form-control" autocomplete="off" required /><br>
           <span class="text-danger">@TempData["errorPassword"]</span>
         </div>
-        <div class="form-group">
+        <div class="form-group text-center d-grid">
             <input type="submit" id="submit" disabled="disabled" class="btn btn-primary mb-2" value="Login"/>
         </div>
       </form>
     </div>
-  </div>
-
-</div>
-    
-    <script>
+  </div>  
+  
+  <script>
 $(document).ready(function() {
     $('#tbName').on('input change', function() {
         if($(this).val() != '') {

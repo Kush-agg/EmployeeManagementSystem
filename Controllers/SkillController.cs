@@ -66,7 +66,7 @@ public class SkillController : Controller
                 TempData["success"]="Skill created successfully";
                 return RedirectToAction(nameof(Index));
             }else{
-                TempData["success"]="Skill already exists";
+                TempData["warning"]="Skill already exists";
 
             }
             
@@ -130,6 +130,12 @@ public class SkillController : Controller
         if (_unitOfWork.Skill.GetAll() == null)
         {
             return Problem("Entity set 'MvcEmployeeContext.Skill'  is null.");
+        }
+        var es = _unitOfWork.EmployeeSkill.GetFirstOrDefault(es=> es.skillId == id);
+        if(es != null)
+        {
+            TempData["error"]="Skill is assigned to employee";
+            return Redirect(Request.Headers["Referer"].ToString());
         }
         var Skill = _unitOfWork.Skill.GetFirstOrDefault(s => s.skillId == id);
         if (Skill != null)

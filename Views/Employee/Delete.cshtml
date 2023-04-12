@@ -1,5 +1,5 @@
 @model Employee
-
+@Html.AntiForgeryToken()
 <form method="post" asp-action="Delete">
   <input asp-for ="employeeId" hidden />
     <div class="border p-3 mt-4">

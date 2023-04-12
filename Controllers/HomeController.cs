@@ -145,12 +145,12 @@ public class HomeController : Controller
             }
             list = s;
             view = true;
-            return View("Index","Home");
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
         public IActionResult turnFalse(){
             view = false;
-            return View("Index","Home");
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
        

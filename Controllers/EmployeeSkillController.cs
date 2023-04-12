@@ -37,10 +37,7 @@ namespace EMS.Controllers;
             return View(EmployeeSkill);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,10 +51,17 @@ namespace EMS.Controllers;
                 {
                     _unitOfWork.EmployeeSkill.Add(EmployeeSkill);
                     _unitOfWork.Save();
-                    return View("Index","Employee");
+                    TempData["success"]="Success: skill assigned to employee";
+                }else{
+                    check.experience= EmployeeSkill.experience;
+                    check.level = EmployeeSkill.level;
+                    Edit(check.employeeSkillId,check);
                 }
+            }else
+            {
+                TempData["error"]="Failure: skill not assigned to employee";
             }
-            return View(EmployeeSkill);
+            return RedirectToAction("Index","Employee");
         }
 
         public async Task<IActionResult> Edit(string? id)
@@ -76,18 +80,15 @@ namespace EMS.Controllers;
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, EmployeeSkill employeeSkill)
+        public async void Edit(string id, EmployeeSkill EmployeeSkill)
         {
-            if (id != employeeSkill.employeeSkillId)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _unitOfWork.EmployeeSkill.Update(EmployeeSkill);
+                _unitOfWork.Save();
+                TempData["success"]="Skill updated Successfully";
             }
-            return View(employeeSkill);
         }
 
         public async Task<IActionResult> Delete(string? id)

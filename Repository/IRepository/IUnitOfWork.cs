@@ -7,5 +7,7 @@ public interface IUnitOfWork
     ISkillRespository Skill {get;}
     IEmployeeSkillRepository EmployeeSkill{get;}
 
+    IExpertLevelRepository ExpertLevel{get;}
+
     void Save();
 }

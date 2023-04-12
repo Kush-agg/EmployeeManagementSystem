@@ -38,12 +38,12 @@ public class LoginController :Controller
 
                 }
                 else{
-                    TempData["errorPassword"] = "Invalid Password!";
+                    TempData["error"] = "Invalid Password!";
                     return View(model);
                 }
             }
            else{
-                    TempData["errorMessage"] = "Invalid UserName!";
+                    TempData["error"] = "User does not exist";
                     return View(model);
                 }
          

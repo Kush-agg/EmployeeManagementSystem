@@ -1,6 +1,6 @@
 @model EMS.Models.ViewModels.EmployeeIndex
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+@Html.AntiForgeryToken()
 <div class="mb-3">
     <a asp-controller="Employee" asp-action="Create" class="btn btn-primary"> Add Employee</a>   
 </div>

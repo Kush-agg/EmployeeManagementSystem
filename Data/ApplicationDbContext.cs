@@ -11,6 +11,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Employee> Employees {get; set;}
     public DbSet<Skill> Skills {get; set;}
     public DbSet<EmployeeSkill> EmployeeSkills {get; set;}
+    public DbSet<ExpertLevel> ExpertLevels{get; set;}
 
     protected override void OnModelCreating (ModelBuilder modelBuilder)
     {

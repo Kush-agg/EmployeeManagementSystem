@@ -7,8 +7,6 @@ using EMS.Model.ViewModels;
 
 namespace EMS.Controllers;
 
-// public class EmployeeController : Controller
-// {
     public class EmployeeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -58,6 +56,14 @@ namespace EMS.Controllers;
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Employee Employee)
         {
+            if(check_Date(Employee.dateOfJoining))
+            {
+                ModelState.AddModelError("dateOfJoining","Please enter a valid date");
+            }
+            var data = _unitOfWork.Employee.GetFirstOrDefault(e=> e.email==Employee.email);
+            if(data != null){
+                ModelState.AddModelError("email", "This email is already owned by an employee");
+            }
             if (ModelState.IsValid)
             {
                 _unitOfWork.Employee.Add(Employee);
@@ -146,25 +152,6 @@ namespace EMS.Controllers;
             return new List<Employee>();
         }
 
-        // public IActionResult ShowpopUp(int id)
-        // {
-        //     var employeeSkill = _unitOfWork.EmployeeSkill.GetAll().ToList();
-        //     employeeSkill = employeeSkill.Where(es=> es.employeeId==id).ToList();
-        //     List<Skill> s = new List<Skill>();
-        //     var skills = _unitOfWork.Skill.GetAll().ToList();
-        //     foreach(var item in employeeSkill)
-        //     {
-        //         var q = skills.Where(s=> s.skillId==item.skillId).FirstOrDefault();
-        //         if(q!= null)
-        //         {
-        //             s.Add(q);
-        //         }
-        //     }
-        //     ViewBag.EmployeeId = id;
-        //     // var venue = _context.Venues.FirstOrDefault(x => x.Id == id);
-        //     //specify the name or path of the partial view
-        //     return PartialView("_ViewSkill",s);
-        // }
         
         public IActionResult AssignViewBag(int id){
             var employeeSkill = _unitOfWork.EmployeeSkill.GetAll().ToList();
@@ -192,5 +179,17 @@ namespace EMS.Controllers;
         public IActionResult turnFalse(){
             modal = false;
             return RedirectToAction(nameof(Index));
+        }
+
+        public bool check_Date(DateTime date)
+        {
+            int age = 0;  
+            age = DateTime.Now.Subtract(date).Days;
+             age = age / 365;
+            if(age<0 || age>40)
+            {
+                return true;
+            }
+            return false;
         }
     }

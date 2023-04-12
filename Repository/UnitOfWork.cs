@@ -14,10 +14,12 @@ public class UnitOfWork : IUnitOfWork
         Employee = new EmployeeRepository(_context);
         Skill = new SkillRespository(_context);
         EmployeeSkill = new EmployeeSkillRepository(_context);
+        ExpertLevel = new ExpertLevelRepository(_context);
     }
     public IEmployeeRepository Employee {get; private set;}
     public ISkillRespository Skill {get; private set;}
     public IEmployeeSkillRepository EmployeeSkill{get; private set;}
+    public IExpertLevelRepository ExpertLevel{get; private set;}
 
     public void Save()
     {
